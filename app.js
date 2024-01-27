@@ -19,11 +19,11 @@ function generetSecretNumber () {
     let generatedNumber = Math.floor(Math.random()*maxNumb)+1;
     //if we already draw all the numbers
     if (listDrawnNumbers.length()==maxNumb) {
-        asignElementText('p',`Los número disponibles ya han sido sorteados`);
+        asignElementText('p','Los número disponibles ya han sido sorteados');
     } else {
         //if the generated number is in the list, call the funcition  again until generate a unique number
         if (listDrawnNumbers.includes(generatedNumber)) {
-            generatedNumber();
+            generetSecretNumber();
         } else {
             listDrawnNumbers.push(generatedNumber);
             return generatedNumber;
