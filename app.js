@@ -1,5 +1,6 @@
 let listDrawnNumbers = [];
 let maxNumb = 10;
+let secretNumber=0, attempt=0;
 // ctrl + F find some
 function asignElementText(label,text){
     let laabelHTML = document.querySelector(label);
@@ -10,20 +11,20 @@ function asignElementText(label,text){
 function initialConditions(){
     asignElementText('h1','Bienvenidos al juego del número secreto');
     asignElementText('p',`Ingrese un número del 1 al ${maxNumb}`);
-    secretNumber = generetSecretNumber();
+    secretNumber = generateSecretNumber();
     attempt=1;
 }
 
 //generet a secret number
-function generetSecretNumber () {
+function generateSecretNumber () {
     let generatedNumber = Math.floor(Math.random()*maxNumb)+1;
     //if we already draw all the numbers
-    if (listDrawnNumbers.length()==maxNumb) {
+    if (listDrawnNumbers.length==maxNumb) {
         asignElementText('p','Los número disponibles ya han sido sorteados');
     } else {
         //if the generated number is in the list, call the funcition  again until generate a unique number
         if (listDrawnNumbers.includes(generatedNumber)) {
-            generetSecretNumber();
+            return generateSecretNumber();
         } else {
             listDrawnNumbers.push(generatedNumber);
             return generatedNumber;
